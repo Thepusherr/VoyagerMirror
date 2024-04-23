@@ -1,0 +1,10 @@
+.ruby-version
+.ruby-gemset
+Gemfile.lock
+doc/
+.yardoc/
+coverage/
+pkg/
+spec/bundle/unpatched_gems/.bundle/
+vendor/bundle/
+tmp/

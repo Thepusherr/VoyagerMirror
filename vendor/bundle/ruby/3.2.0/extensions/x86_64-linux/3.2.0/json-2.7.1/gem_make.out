@@ -1,0 +1,16 @@
+current directory: /home/pusher/RubymineProjects/voyager/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+/home/pusher/.rvm/rubies/ruby-3.2.3/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/pusher/RubymineProjects/voyager/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240423-23402-9mpdni sitelibdir\=./.gem.20240423-23402-9mpdni clean
+
+current directory: /home/pusher/RubymineProjects/voyager/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240423-23402-9mpdni sitelibdir\=./.gem.20240423-23402-9mpdni
+make: Nothing to be done for 'all'.
+
+current directory: /home/pusher/RubymineProjects/voyager/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240423-23402-9mpdni sitelibdir\=./.gem.20240423-23402-9mpdni install
+
+current directory: /home/pusher/RubymineProjects/voyager/vendor/bundle/ruby/3.2.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240423-23402-9mpdni sitelibdir\=./.gem.20240423-23402-9mpdni clean
