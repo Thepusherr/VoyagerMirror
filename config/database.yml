@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: voyager_development
+  host: localhost
+  username: root
+  password: root
+
+development:
+  <<: *default
+  database: voyager_development
+
+test:
+  <<: *default
+  database: voyager_test
+
+production:
+  <<: *default
+  database: voyager_production
+  username: root
+  password: root

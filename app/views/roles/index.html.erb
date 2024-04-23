@@ -1,0 +1,28 @@
+<h1>Listing roles</h1>
+
+<table>
+  <tr>
+    <th>name</th>
+    <th>description</th>
+  </tr>
+
+  <% @roles.each do |role| %>
+    <tr>
+      <td><%= role.name %></td>
+      <td><%= role.description %></td>
+      <td>
+        <% if current_user_admin? %>
+          <%= link_to 'Edit', edit_role_path(role) %></td>
+        <% end %>
+        <td>
+          <% if current_user_admin? %>
+            <%= link_to 'Destroy', role_path(role), :confirm => 'Are you sure?', data: { "turbo-method": :delete }%>
+          <% end %>
+        </td>
+        </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Role', new_role_path %>
