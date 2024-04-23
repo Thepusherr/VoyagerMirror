@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   resources :teams
 
-  get 'dashboard' => 'dashboard#index', as: 'dashboard'
+  get "dashboard" => "dashboard#index", :as => "dashboard"
 end
