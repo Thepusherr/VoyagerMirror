@@ -1,0 +1,11 @@
+= form_for(@role) do |f|
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :description
+    %br/
+    = f.text_field :description
+  .actions
+    = f.submit "Save"

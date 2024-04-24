@@ -1,0 +1,28 @@
+.flex.min-h-full.flex-col.justify-center.px-6.py-12.lg:px-8
+  .sm:mx-auto.sm:w-full.sm:max-w-sm
+    %h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-gray-900 Sign in to your account
+    %div.mt-10.sm:mx-auto.sm:w-full.sm:max-w-sm
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.label :email, class: "block text-gray-500 font-bold md:text-right mt-2"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        .field
+          = f.label :password, class: "block text-gray-500 font-bold md:text-right mt-2"
+          %br/
+          = f.password_field :password, autocomplete: "current-password", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        - if devise_mapping.rememberable?
+          .field
+            %div.flex.items-center.justify-between.my-3.mt-2
+              = f.check_box :remember_me
+              = f.label :remember_me, class: "text-gray-600"
+              %div.text-sm
+              - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+                = link_to "Forgot your password?", new_password_path(resource_name), class: 'font-semibold text-indigo-600 hover:text-indigo-500'
+        .actions
+          %br/
+          = f.submit "Sign in", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 py-1.5"
+      - if devise_mapping.registerable? && controller_name != 'registrations'
+        %div.justify-center.flex.flex-wrap.mt-1
+          or
+        = link_to "Sign up", new_registration_path(resource_name), class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 py-1.5"

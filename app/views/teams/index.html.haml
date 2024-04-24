@@ -1,0 +1,17 @@
+%h1 Listing teams
+%table
+  %tr
+    %th name
+    %th description
+  - @teams.each do |team|
+    %tr
+      %td= team.name
+      %td= team.description
+      %td
+        - if current_user_admin?
+          = link_to 'Edit', edit_team_path(team)
+      %td
+        - if current_user_admin?
+          = link_to 'Destroy', team_path(team), :confirm => 'Are you sure?', data: { "turbo-method": :delete }
+%br/
+= link_to 'New team', new_team_path

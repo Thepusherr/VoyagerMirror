@@ -1,0 +1,37 @@
+.flex.min-h-full.flex-col.justify-center.px-6.py-12.lg:px-8
+  .sm:mx-auto.sm:w-full.sm:max-w-sm
+    %h2.mt-10.text-center.text-2xl.font-bold.leading-9.tracking-tight.text-gray-900 Register your account
+    %div.mt-10.sm:mx-auto.sm:w-full.sm:max-w-sm
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field
+          = f.label :email, class: "block text-gray-500 font-bold md:text-right mt-2"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        .field
+          = f.label :username, class: "block text-gray-500 font-bold md:text-right mt-2"
+          %br/
+          = f.text_field :username, autofocus: true, autocomplete: "email", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        .field
+          = f.label :first_name, class: "block text-gray-500 font-bold md:text-right mt-2"
+          %br/
+          = f.text_field :first_name, autofocus: true, autocomplete: "email", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        .field
+          = f.label :last_name, class: "block text-gray-500 font-bold md:text-right mt-2"
+          %br/
+          = f.text_field :last_name, autofocus: true, autocomplete: "email", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        .field
+          = f.label :password, class: "block text-gray-500 font-bold md:text-right mt-2"
+          %br/
+          = f.password_field :password, autocomplete: "current-password", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        .field
+          = f.label :password_confirmation, class: "block text-gray-500 font-bold md:text-right mt-2"
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "current-password", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        .actions
+          %br/
+          = f.submit "Sign up", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 py-1.5"
+          - if controller_name != 'sessions'
+            %div.justify-center.flex.flex-wrap.mt-1
+              or
+            = link_to "Log in", new_session_path(resource_name), class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 py-1.5"
