@@ -5,6 +5,7 @@
     %table.text-md.bg-white.shadow-md.rounded.mb-4
       %tbody.bg-gray-200
         %tr.border-b
+          %th.text-left.p-3.px-5.text-center Avatar
           %th.text-left.p-3.px-5.text-center Username
           %th.text-left.p-3.px-5.text-center Email
           %th.text-left.p-3.px-5.text-center First Name
@@ -14,6 +15,12 @@
           %th
         - @users.each do |user|
           %tr.border-b.hover:bg-orange-100.bg-gray-100
+            %td.border.px-8.py-4
+              %div.flex-shrink-0.w-10.h-10
+                -if user.avatar?
+                  =image_tag(user.avatar, class: "w-full h-full rounded-full")
+                -else
+                  =image_tag("default-avatar.png", class: "w-full h-full rounded-full")
             %td.border.px-8.py-4= user.username
             %td.border.px-8.py-4= user.email
             %td.border.px-8.py-4= user.first_name

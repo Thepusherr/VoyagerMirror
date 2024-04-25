@@ -1,5 +1,10 @@
 = form_for(@user) do |f|
   .field
+    = f.label :avatar, class: "block text-gray-500 font-bold mt-2"
+    %br/
+    = f.file_field :avatar, class: ""
+  .field
+  .field
     = f.label :email, class: "block text-gray-500 font-bold mt-2"
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
