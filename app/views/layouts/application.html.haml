@@ -1,5 +1,5 @@
 !!!
-%html{:class => "h-full bg-white"}
+%html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title App
@@ -9,8 +9,8 @@
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
-  %body{:class => "h-full"}
-    %main.container.mx-auto.mt-28.px-5
+  %body
+    %main
       %p.notice= notice
       %p.alert= alert
       = yield

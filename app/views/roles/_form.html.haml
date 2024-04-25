@@ -1,11 +1,12 @@
 = form_for(@role) do |f|
   .field
-    = f.label :name
+    = f.label :name, class: "block text-gray-500 font-bold mt-2"
     %br/
-    = f.text_field :name
+    = f.text_field :name, class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
   .field
-    = f.label :description
+    = f.label :description, class: "block text-gray-500 font-bold mt-2"
     %br/
-    = f.text_field :description
+    = f.text_field :description, class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
   .actions
-    = f.submit "Save"
+    = f.submit "Save", class: "flex w-full mt-8 justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 py-1.5"
+

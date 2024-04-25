@@ -1,17 +1,29 @@
-%h1 Listing teams
-%table
-  %tr
-    %th name
-    %th description
-  - @teams.each do |team|
-    %tr
-      %td= team.name
-      %td= team.description
-      %td
-        - if current_user_admin?
-          = link_to 'Edit', edit_team_path(team)
-      %td
-        - if current_user_admin?
-          = link_to 'Destroy', team_path(team), :confirm => 'Are you sure?', data: { "turbo-method": :delete }
-%br/
-= link_to 'New team', new_team_path
+.text-gray-900.text-center
+  %h1.mt-10.text-center.text-3xl.font-bold.leading-9.tracking-tight.text-gray-900
+    Listing teams
+  .flex.justify-center.mt-10
+    %table.text-md.bg-white.shadow-md.rounded.mb-4
+      %tbody.bg-gray-200
+        %tr.border-b
+          %th.text-left.p-3.px-5.text-center Name
+          %th.text-left.p-3.px-5.text-center Description
+          %th.text-left.p-3.px-5
+          %th.text-left.p-3.px-5
+          %th
+        - @teams.each do |team|
+          %tr.border-b.hover:bg-orange-100.bg-gray-100
+            %td.border.px-8.py-4= team.name
+            %td.border.px-8.py-4= team.description
+            %td.border.px-8.py-4
+              - if current_user_admin?
+                = link_to '<button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</button>'.html_safe, edit_team_path(team)
+            %td.border.px-8.py-4
+              - if current_user_admin?
+                = link_to '<button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>'.html_safe , team_path(team), :confirm => 'Are you sure?', data: { "turbo-method": :delete }
+.text-gray-900.text-center
+  %br/
+  = link_to '<button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">New team</button>'.html_safe, new_team_path
+  %br/
+  = link_to '<button type="button" class="text-center mt-5 mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">Dashboard</button>'.html_safe, root_path
+
+

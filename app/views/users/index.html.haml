@@ -1,21 +1,31 @@
-%h1 Listing users
-%table
-  %tr
-    %th Username
-    %th Email
-    %th First Name
-    %th Last Name
-  - @users.each do |user|
-    %tr
-      %td= user.username
-      %td= user.email
-      %td= user.first_name
-      %td= user.last_name
-      %td
-        - if current_user == user || current_user_admin?
-          = link_to 'Edit', edit_user_path(user)
-      %td
-        - if current_user_admin?
-          = link_to 'Destroy', user_path(user), :confirm => 'Are you sure?', data: { "turbo-method": :delete }
-%br/
-= link_to 'New user', new_user_path
+.text-gray-900.text-center
+  %h1.mt-10.text-center.text-3xl.font-bold.leading-9.tracking-tight.text-gray-900
+    Listing users
+  .flex.justify-center.mt-10
+    %table.text-md.bg-white.shadow-md.rounded.mb-4
+      %tbody.bg-gray-200
+        %tr.border-b
+          %th.text-left.p-3.px-5.text-center Username
+          %th.text-left.p-3.px-5.text-center Email
+          %th.text-left.p-3.px-5.text-center First Name
+          %th.text-left.p-3.px-5.text-center Last Name
+          %th.text-left.p-3.px-5
+          %th.text-left.p-3.px-5
+          %th
+        - @users.each do |user|
+          %tr.border-b.hover:bg-orange-100.bg-gray-100
+            %td.border.px-8.py-4= user.username
+            %td.border.px-8.py-4= user.email
+            %td.border.px-8.py-4= user.first_name
+            %td.border.px-8.py-4= user.last_name
+            %td.border.px-8.py-4
+              - if current_user == user || current_user_admin?
+                = link_to '<button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</button>'.html_safe, edit_user_path(user)
+            %td.border.px-8.py-4
+              - if current_user_admin?
+                = link_to '<button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>'.html_safe , user_path(user), :confirm => 'Are you sure?', data: { "turbo-method": :delete }
+.text-gray-900.text-center
+  %br/
+  = link_to '<button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">New user</button>'.html_safe, new_user_path
+  %br/
+  = link_to '<button type="button" class="text-center mt-5 mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">Dashboard</button>'.html_safe, root_path
