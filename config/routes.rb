@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :users, except: :show
 
-  resources :roles
+  resources :roles, except: :show
 
-  resources :teams
+  resources :teams, except: :show
 
   get "dashboard" => "dashboard#index", :as => "dashboard"
 end

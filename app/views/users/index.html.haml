@@ -10,6 +10,8 @@
           %th.text-left.p-3.px-5.text-center Email
           %th.text-left.p-3.px-5.text-center First Name
           %th.text-left.p-3.px-5.text-center Last Name
+          %th.text-left.p-3.px-5.text-center Role
+          %th.text-left.p-3.px-5.text-center Team
           %th.text-left.p-3.px-5
           %th.text-left.p-3.px-5
           %th
@@ -17,7 +19,7 @@
           %tr.border-b.hover:bg-orange-100.bg-gray-100
             %td.border.px-8.py-4
               %div.flex-shrink-0.w-10.h-10
-                -if user.avatar?
+                -if user.avatar.attached?
                   =image_tag(user.avatar, class: "w-full h-full rounded-full")
                 -else
                   =image_tag("default-avatar.png", class: "w-full h-full rounded-full")
@@ -25,6 +27,8 @@
             %td.border.px-8.py-4= user.email
             %td.border.px-8.py-4= user.first_name
             %td.border.px-8.py-4= user.last_name
+            -# %td.border.px-8.py-4= user.role
+            -# %td.border.px-8.py-4= user.team
             %td.border.px-8.py-4
               - if current_user == user || current_user_admin?
                 = link_to '<button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</button>'.html_safe, edit_user_path(user)

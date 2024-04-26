@@ -1,6 +1,17 @@
 class UsersController < ApplicationController
+
+
   def index
     @users = User.all
+    @items = Role.all.map do |role|
+      FancySelectComponent::Item.new(role.id, role.name)
+    end
+    @roles = Role.all.map do |role|
+      FancySelectComponent::Item.new(role.id, role.name)
+    end
+    @teams = Team.all.map do |team|
+      FancySelectComponent::Item.new(team.id, team.name)
+    end
   end
 
   def new
@@ -8,9 +19,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
 
-    if @user.save
+    if @user.save!
       redirect_to @user, notice: "User was successfully created."
     else
       render :new
@@ -42,5 +53,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :avatar)
+  end
+
+  def authorize_admin
+    return if current_user.admin?
+    redirect_to root_path, alert: 'Admins only!'
   end
 end

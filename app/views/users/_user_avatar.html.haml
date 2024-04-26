@@ -1,0 +1,8 @@
+.field{"data-controller" => "user_avatar"}
+  = form.label :avatar, class: "block text-gray-500 font-bold mt-2"
+  %br/
+  = form.file_field :avatar, direct_upload: true, data: { user_avatars_target: "input", action: "change->user_avatars#user_avatar" }, class: ""
+  -if user.avatar.attached?
+    =image_tag(user.avatar, data: {user_avatars_target: "user_avatar"}, class: "w-full h-full rounded-full")
+  -else
+    =image_tag("default-avatar.png", data: {user_avatars_target: "user_avatar"}, class: "w-full h-full rounded-full")

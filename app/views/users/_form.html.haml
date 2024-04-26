@@ -1,9 +1,5 @@
 = form_for(@user) do |f|
-  .field
-    = f.label :avatar, class: "block text-gray-500 font-bold mt-2"
-    %br/
-    = f.file_field :avatar, class: ""
-  .field
+  = render 'user_avatar', form: f, user: @user
   .field
     = f.label :email, class: "block text-gray-500 font-bold mt-2"
     %br/
@@ -31,5 +27,17 @@
     = f.label :password_confirmation, class: "block text-gray-500 font-bold mt-2"
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+  - if current_user.admin
+    .field
+    = f.label :Role, class: "block text-gray-500 font-bold mt-2"
+    = f.select :role_ids, Role.all.collect {|x| [x.name, x.id]}, {}
+    -# %br/
+    -# = f.select :role_ids, @user.user_teams.reject {|x| [x.user_id != @user.id]}, {}, :multiple => true
+    .field
+      = f.label :Team, class: "block text-gray-500 font-bold mt-2"
+      = f.select :team_ids, Team.all.collect {|x| [x.name, x.id]}, {}
+      -# %br/
+      -# = f.select :team_ids, @user.user_roles.collect {|x| [x.name, x.id]}, {}, :multiple => true
+
   .actions
     = f.submit "Save", class: "flex w-full mt-8 justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 py-1.5"
