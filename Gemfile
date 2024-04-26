@@ -6,7 +6,7 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
 gem "bootsnap", require: false
 gem "haml-rails"
-gem 'html2haml'
+gem "html2haml"
 gem "importmap-rails"
 gem "jbuilder"
 gem "pg", "~> 1.1"

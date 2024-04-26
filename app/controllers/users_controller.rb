@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-
-
   def index
     @users = User.all
     @items = Role.all.map do |role|
@@ -57,6 +55,6 @@ class UsersController < ApplicationController
 
   def authorize_admin
     return if current_user.admin?
-    redirect_to root_path, alert: 'Admins only!'
+    redirect_to root_path, alert: "Admins only!"
   end
 end
