@@ -14,5 +14,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true, format: {with: /\A[a-zA-Z0-9_]+\z/}
   validates :email, presence: true, uniqueness: true, format: {with: /\A[a-zA-Z0-9_\-\.]+@[\w\-]+(\.\w{2,})*\z/}
-  validates :password, presence: true, length: {minimum: 6}, confirmation: true
+  validates :password, presence: true, length: {minimum: 6}, confirmation: true, allow_blank: true
 end
