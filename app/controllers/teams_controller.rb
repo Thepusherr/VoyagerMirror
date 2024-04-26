@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = current_user.admin? ? Team.all : current_user.teams
+    @teams = current_user.admin? ? Team.all : Team.all.reject {|x| x.owner_id.to_i != current_user.id }
   end
 
   def new
