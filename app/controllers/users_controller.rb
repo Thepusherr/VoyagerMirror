@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    @items = Role.all.map do |role|
-      FancySelectComponent::Item.new(role.id, role.name)
-    end
     @roles = Role.all.map do |role|
       FancySelectComponent::Item.new(role.id, role.name)
     end
