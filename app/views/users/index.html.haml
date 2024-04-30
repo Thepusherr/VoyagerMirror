@@ -10,10 +10,13 @@
           %th.text-left.p-3.px-5.text-center Email
           %th.text-left.p-3.px-5.text-center First Name
           %th.text-left.p-3.px-5.text-center Last Name
-          %th.text-left.p-3.px-5.text-center Role
-          %th.text-left.p-3.px-5.text-center Team
+          - if current_user_admin?
+            %th.text-left.p-3.px-5.text-center Role
+          - if current_user_admin?
+            %th.text-left.p-3.px-5.text-center Team
           %th.text-left.p-3.px-5
-          %th.text-left.p-3.px-5
+          - if current_user_admin?
+            %th.text-left.p-3.px-5
           %th
         - @users.each do |user|
           %tr.border-b.hover:bg-orange-100.bg-gray-100
@@ -27,13 +30,23 @@
             %td.border.px-8.py-4= user.email
             %td.border.px-8.py-4= user.first_name
             %td.border.px-8.py-4= user.last_name
-            -# %td.border.px-8.py-4= user.role
-            -# %td.border.px-8.py-4= user.team
-            %td.border.px-8.py-4
-              - if current_user == user || current_user_admin?
+            - if current_user_admin?
+              %td.border.px-8.py-4
+                - user.teams.each do |team|
+                  = team.name + " Team roles:"
+                  -team.users.each do |user|
+                    = user
+                - Role.where(:id == UserRole.where(:user_id == user.id).collect {|x| x.role_id}.first).each do |role|
+                  %div= role.name
+            - if current_user_admin?
+              %td.border.px-8.py-4
+                - Team.where(:id == UserTeam.where(:user_id == user.id).collect {|x| x.team_id}.first).each do |team|
+                  %div= team.name
+            - if current_user == user || current_user_admin?
+              %td.border.px-8.py-4
                 = link_to '<button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</button>'.html_safe, edit_user_path(user)
-            %td.border.px-8.py-4
-              - if current_user_admin?
+            - if current_user_admin?
+              %td.border.px-8.py-4
                 = link_to '<button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>'.html_safe , user_path(user), :confirm => 'Are you sure?', data: { "turbo-method": :delete }
 .text-gray-900.text-center
   %br/

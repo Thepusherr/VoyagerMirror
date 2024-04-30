@@ -5,18 +5,22 @@
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
   .field
+    %br/
     = f.label :username, class: "block text-gray-500 font-bold mt-2"
     %br/
     = f.text_field :username, class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
   .field
+    %br/
     = f.label :first_name, class: "block text-gray-500 font-bold mt-2"
     %br/
     = f.text_field :first_name, class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
   .field
+    %br/
     = f.label :last_name, class: "block text-gray-500 font-bold mt-2"
     %br/
     = f.text_field :last_name, class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
   .field
+    %br/
     = f.label :password, class: "block text-gray-500 font-bold mt-2"
     - if @minimum_password_length
       %em
@@ -24,20 +28,25 @@
     %br/
     = f.password_field :password, autocomplete: "new-password", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
   .field
-    = f.label :password_confirmation, class: "block text-gray-500 font-bold mt-2"
     %br/
+    = f.label :password_confirmation, class: "block text-gray-500 font-bold mt-2"
     = f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-0 block w-full rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+    %br/
   - if current_user.admin
-    .field
-    = f.label :Role, class: "block text-gray-500 font-bold mt-2"
-    = f.select :role_ids, Role.all.collect {|x| [x.name, x.id]}, {}
-    -# %br/
-    -# = f.select :role_ids, @user.user_teams.reject {|x| [x.user_id != @user.id]}, {}, :multiple => true
-    .field
+    .field.overflow-x
+      = f.label :Role, class: "block text-gray-500 font-bold mt-2"
+      %table.mt-2.max-h-48.overflow-y-auto
+        = f.collection_check_boxes(:role_ids, Role.all, :id, :name) do |b|
+          %tr.border-b.hover:bg-orange-100.bg-gray-100
+            %td.border.px-8.py-4= b.check_box
+            %td.border.px-8.py-4= b.label
+    .field.overflow-x
+      %br/
       = f.label :Team, class: "block text-gray-500 font-bold mt-2"
-      = f.select :team_ids, Team.all.collect {|x| [x.name, x.id]}, {}
-      -# %br/
-      -# = f.select :team_ids, @user.user_roles.collect {|x| [x.name, x.id]}, {}, :multiple => true
-
+      %table.mt-2.max-h-48.overflow-y-auto
+        = f.collection_check_boxes(:team_ids, Team.all, :id, :name) do |b|
+          %tr.border-b.hover:bg-orange-100.bg-gray-100
+            %td.border.px-8.py-4= b.check_box
+            %td.border.px-8.py-4= b.label
   .actions
     = f.submit "Save", class: "flex w-full mt-8 justify-center rounded-md bg-indigo-600 px-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 py-1.5"
