@@ -7,6 +7,7 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 gem "bootsnap", require: false
 gem "haml-rails"
 gem "html2haml"
+gem 'sass-rails'
 gem "importmap-rails"
 gem "jbuilder"
 gem "pg", "~> 1.1"
@@ -23,11 +24,13 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 group :development, :test do
   gem "debug", platforms: %i[mri windows]
   gem "standardrb"
-  gem "rspec-rails"
-
   gem "bundler-leak"
   gem "bundler-audit"
   gem "brakeman"
+end
+
+group :test do
+  gem "rspec-rails"
 end
 
 group :development do
