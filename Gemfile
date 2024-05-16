@@ -20,6 +20,7 @@ gem "turbo-rails"
 gem "view_component"
 gem "devise"
 gem "tzinfo-data", platforms: %i[windows jruby]
+gem 'capybara'
 
 group :development, :test do
   gem "debug", platforms: %i[mri windows]
