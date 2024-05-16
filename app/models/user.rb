@@ -10,9 +10,11 @@ class User < ApplicationRecord
   has_many :teams, through: :user_teams
   has_many :roles, through: :user_roles
 
+  validates_presence_of :first_name, :last_name, :username, :email
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true, format: {with: /\A[a-zA-Z0-9_]+\z/}
   validates :email, presence: true, uniqueness: true, format: {with: /\A[a-zA-Z0-9_\-\.]+@[\w\-]+(\.\w{2,})*\z/}
   validates :password, presence: true, length: {minimum: 6}, confirmation: true, allow_blank: true
+  scope :admin, -> { where(admin: true) }
 end
