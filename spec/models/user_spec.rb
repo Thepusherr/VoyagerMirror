@@ -68,8 +68,19 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
-    it "has valid name type", name: nil do
-      expect(user.name).to be_an_instance_of(String)
+    it "has valid objects types", name: nil do
+      user = User.new(
+        first_name: 'first_name1',
+        last_name: 'last_name1',
+        username: 'username1',
+        email: 'example@example.com',
+        password: '12345678f'
+      )
+      expect(user.first_name).to be_an_instance_of(String)
+      expect(user.first_name).to be_an_instance_of(String)
+      expect(user.first_name).to be_an_instance_of(String)
+      expect(user.first_name).to be_an_instance_of(String)
+      expect(user.first_name).to be_an_instance_of(String)
     end
   end
 
