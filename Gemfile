@@ -23,15 +23,19 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem 'capybara'
 
 group :development, :test do
-  gem "debug", platforms: %i[mri windows]
+  gem "debug", platforms: %i[mri mingw x64_mingw windows]
   gem "standardrb"
   gem "bundler-leak"
   gem "bundler-audit"
   gem "brakeman"
+  gem 'factory_bot_rails'
+  gem "rspec-rails"
+  gem 'rails-controller-testing'
+  gem "faker"
 end
 
 group :test do
-  gem "rspec-rails"
+
 end
 
 group :development do
