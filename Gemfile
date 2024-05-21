@@ -20,7 +20,6 @@ gem "turbo-rails"
 gem "view_component"
 gem "devise"
 gem "tzinfo-data", platforms: %i[windows jruby]
-gem 'capybara'
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw windows]
@@ -32,10 +31,12 @@ group :development, :test do
   gem "rspec-rails"
   gem 'rails-controller-testing'
   gem "faker"
+  gem 'capybara'
+  gem "selenium-webdriver"
 end
 
 group :test do
-
+  
 end
 
 group :development do

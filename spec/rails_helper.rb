@@ -39,6 +39,14 @@ RSpec.configure do |config|
     Rails.root.join('spec/fixtures')
   ]
 
+  config.before(:each, type: :system) do
+    driven_by :rack_test # rack_test by default, for performance
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless # selenium when we need javascript
+  end
+end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
