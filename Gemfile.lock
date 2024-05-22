@@ -299,6 +299,7 @@ GEM
     ruby_parser (3.21.0)
       racc (~> 1.5)
       sexp_processor (~> 4.16)
+    rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -309,6 +310,11 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selenium-webdriver (4.21.1)
+      base64 (~> 0.2)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     sexp_processor (4.17.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -365,6 +371,7 @@ GEM
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
     webrick (1.8.1)
+    websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -399,6 +406,7 @@ DEPENDENCIES
   redis (>= 4.0.1)
   rspec-rails
   sass-rails
+  selenium-webdriver
   sprockets-rails
   standardrb
   stimulus-rails

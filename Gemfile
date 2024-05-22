@@ -33,6 +33,7 @@ group :development, :test do
   gem "faker"
   gem 'capybara'
   gem "selenium-webdriver"
+  gem 'fabrication'
 end
 
 group :test do
