@@ -39,6 +39,8 @@ RSpec.configure do |config|
     Rails.root.join('spec/fixtures')
   ]
 
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
   config.before(:each, type: :system) do
     driven_by :rack_test # rack_test by default, for performance
   end
@@ -76,4 +78,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers
 end
