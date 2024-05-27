@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let!(:user) { create(:user) }
+  let!(:user) { User.create(first_name: 'first_name2', last_name: 'last_name2', username: 'username2', email: 'example@example2.com', password: '1234') }
 
   before (:each) do
     sign_in(user) # Factory Bot user
@@ -14,10 +14,9 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-
   context "GET #edit" do
     it "returns a success response" do
-      get :index
+      get "/users/edit", params { "id": 1 }
       expect(response).to be_successful
     end
   end

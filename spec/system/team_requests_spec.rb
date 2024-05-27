@@ -1,6 +1,18 @@
 require "rails_helper"
  
 RSpec.describe "Team management", type: :system do
+  before(:each) do
+    user = FactoryBot.create(
+      :user, 
+      first_name: 'first_name1',
+      last_name: 'last_name1',
+      username: 'username1',
+      email: 'example@example.com',
+      password: '12345678f'
+    )
+    login_as(user, scope: :user)
+  end
+
   it "enables me to create team" do
     visit "/teams/new"
  

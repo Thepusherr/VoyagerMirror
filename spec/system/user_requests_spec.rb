@@ -1,6 +1,18 @@
 require "rails_helper"
  
 RSpec.describe "User management", type: :system do
+  before(:each) do
+    user = FactoryBot.create(
+      :user, 
+      first_name: 'first_name1',
+      last_name: 'last_name1',
+      username: 'username1',
+      email: 'example@example.com',
+      password: '12345678f'
+    )
+    login_as(user, scope: :user)
+  end
+
   it "enables me to create user" do
     visit "/users/new"
  
@@ -16,7 +28,16 @@ RSpec.describe "User management", type: :system do
   end
 
   it "enables me to edit user" do
-    visit "/users/8/edit"
+    user = FactoryBot.create(
+      :user, 
+      first_name: 'first_name2',
+      last_name: 'last_name2',
+      username: 'username2',
+      email: 'example@example2.com',
+      password: '12345678ff'
+    )
+    
+    visit edit_user_path(user)
  
     fill_in "user_email", with: "test123@gmail.com"
     fill_in "user_username", with: "testusername"

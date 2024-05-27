@@ -2,8 +2,16 @@ require "rails_helper"
  
 RSpec.describe "Role management", type: :system do
   before(:each) do
-    user = FactoryBot.create(:user)
-    subject.sign_in user
+    user = FactoryBot.create(
+      :user, 
+      first_name: 'first_name1',
+      last_name: 'last_name1',
+      username: 'username1',
+      email: 'example@example.com',
+      password: '12345678f',
+      admin: true
+    )
+    login_as(user, scope: :user)
   end
 
   it "enables me to create role" do
@@ -16,7 +24,12 @@ RSpec.describe "Role management", type: :system do
   end
 
   it "enables me to edit role" do
-    visit "/roles/1/edit"
+    role = FactoryBot.create(
+      :role, 
+      name: 'name111',
+      description: 'description111',
+    )
+    visit edit_role_path(role)
  
     fill_in "role_name", with: "testrole1"
     fill_in "role_description", with: "testdescription1"

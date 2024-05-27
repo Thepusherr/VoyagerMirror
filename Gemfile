@@ -27,8 +27,9 @@ group :development, :test do
   gem "bundler-leak"
   gem "bundler-audit"
   gem "brakeman"
-  gem 'factory_bot_rails'
+  gem 'rspec'
   gem "rspec-rails"
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem "faker"
   gem 'capybara'
