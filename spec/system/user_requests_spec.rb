@@ -51,7 +51,16 @@ RSpec.describe "User management", type: :system do
   end
 
 
-  it "enables me to edit user" do
+  it "enables me to delete user" do
+    user = FactoryBot.create(
+      :user, 
+      first_name: 'first_name2',
+      last_name: 'last_name2',
+      username: 'username3',
+      email: 'example@example3.com',
+      password: '12345678ff'
+    )
+
     visit "/users"
  
     click_button "Delete"

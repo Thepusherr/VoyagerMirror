@@ -25,7 +25,22 @@ RSpec.describe "Team management", type: :system do
   end
 
   it "enables me to edit team" do
-    visit "/teams/8/edit"
+    user = FactoryBot.create(
+      :user, 
+      first_name: 'first_name1',
+      last_name: 'last_name1',
+      username: 'username2',
+      email: 'example@example2.com',
+      password: '12345678f'
+    )
+
+    team = FactoryBot.create(
+      :team, 
+      name: 'name111',
+      description: 'description111',
+      owner_id: user.id
+    )
+    visit edit_team_path(team)
  
     fill_in "team_name", with: "testteam1"
     fill_in "team_description", with: "testdescr1"
@@ -36,7 +51,23 @@ RSpec.describe "Team management", type: :system do
   end
 
 
-  it "enables me to edit team" do
+  it "enables me to delete team" do
+    user = FactoryBot.create(
+      :user, 
+      first_name: 'first_name1',
+      last_name: 'last_name1',
+      username: 'username2',
+      email: 'example@example2.com',
+      password: '12345678f'
+    )
+
+    team = FactoryBot.create(
+      :team, 
+      name: 'name111',
+      description: 'description111',
+      owner_id: user.id
+    )
+
     visit "/teams"
  
     click_button "Delete"

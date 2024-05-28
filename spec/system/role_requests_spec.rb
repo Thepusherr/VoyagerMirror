@@ -39,7 +39,12 @@ RSpec.describe "Role management", type: :system do
   end
 
 
-  it "enables me to edit user" do
+  it "enables me to delete user" do
+    role = FactoryBot.create(
+      :role, 
+      name: 'name111',
+      description: 'description111',
+    )
     visit "/roles"
  
     click_button "Delete"
